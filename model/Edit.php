@@ -13,7 +13,7 @@
 ?>
 
     <ul style="list-style-type: none; margin: 0; padding: 0; background-color: black; overflow: hidden;">
-        <li style="float: left;"><img src="logo.jpg" alt="Famished Logo" style="height: 100px;"></li>
+        <li style="float: left;"><img src="../Image/logo.jpg" alt="Famished Logo" style="height: 100px;"></li>
         <li style="float: left;"><a href="http://localhost/phpmyadmin/index.php?route=/sql&db=test&table=registration&pos=0" style="display: block; color: white; text-align: center; padding: 14px 16px; text-decoration: none;">View Customer</a></li>
         <li style="float: right;"><a class="logout-button" href="../model/Admin.php" style="display: block; color: white; text-align: center; padding: 14px 16px; text-decoration: none;">Logout</a></li>
     </ul>

@@ -102,7 +102,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
     <ul class="navbar">
         <li>
-            <img src="../images/logo.jpg" alt="Famished Logo">
+            <img src="../Image/logo.jpg" alt="Famished Logo">
         </li>
         <li>
             <a class="logout-button" href="Login.html">Logout</a>

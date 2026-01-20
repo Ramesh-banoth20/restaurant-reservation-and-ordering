@@ -2,5 +2,5 @@
     session_start();
     //session_destroy();
     unset($_SESSION['flag']);
-    header('location: ../view/Dashboard.html');
+    header('location: ../view/Login.html');
 ?>

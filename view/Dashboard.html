@@ -3,48 +3,129 @@
 <head>
     <title>Dashboard</title>
     <script src="../js/search.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/dashboard_swiggy.css">
     
 </head>
 <body>
+    <!-- Swiggy-like public landing dashboard (guest) -->
+    <header class="topbar">
+        <div class="topbar-inner">
+            <a class="brand" href="Dashboard.html">TASTY TRAILS</a>
 
-            <p  style="background-color: whitesmoke;">
-            <a href="Dashboard.html"><b style=" font-size: xx-large; margin-right: 70%;"><i>ABC RESTAURENT</i></b></a>
-            <a href="Signup.html">Signup</a>
-            <a href="Login.html" style="margin: 2%;">Login</a><br><br>
-           </p><br>
-        <center>
-            <a href="track_delivery.php">Track Order</a>
-            <a href="promotion.php"style="margin: 3%;">Offers</a>
-            <a href="aboutus.php">About Us</a><br><br>
-        </center>
-            <img src = "../Image/promo.jpg" alt="Promo" style= "height: 250px; width:100%;">
-<br>
-            <h1 align="center">Our Foods</h1>
-            <table id="Table">
-                <tr rowspan="3">
-                <td><a href="Burger.html"><img src="../Image/burger.jpg" alt="Burger" style="height: 200px; width: 200px;"></a></td>
-                <!-- <td><a href="sushi.html"><img src="../Image/sushi.jpg" alt="shushi" style="height: 200px; width: 200px;"></a></td>
-                <td><a href="fries.html"><img src="../Image/fries.jpg" alt="fries" style="height: 200px; width: 200px;"></a></td>
-                <td><a href="fast_food.html"><img src="../Image/fast_food.jpg" alt="fast_food" style="height: 200px; width: 200px;"></a></td>
-                <td><a href="greeksalad.html"><img src="../Image/greeksalad.jpg" alt="greeksalad" style="height: 200px; width: 200px;"></a></td>
-                <td><a href="spaghetti.html"><img src="../Image/spaghetti.jpg" alt="spaghetti" style="height: 200px; width: 200px;"></a></td> -->
-                </tr>
-                <tr>
-                    <td><b>Burger</b><br>Delicious beef burger with lettuce, cheese, and special sauce.<br>$8</td>
-                    <!-- <td><b>Sushi</b><br>Delicious beef burger with lettuce, cheese, and special sauce.<br>Tk.249</td>
-                    <td><b>Fries</b><br>Delicious beef burger with lettuce, cheese, and special sauce.<br>Tk.279</td>
-                    <td><b>Fast food</b><br>Delicious beef burger with lettuce, cheese, and special sauce.<br>Tk.279</td>
-                    <td><b>Greek salad</b><br>Delicious beef burger with lettuce, cheese, and special sauce.<br>Tk.279</td>
-                    <td><b>Spaghetti</b><br>Delicious beef burger with lettuce, cheese, and special sauce.<br>Tk.279</td> -->
-                </tr>
-                
-            </table><br>
+            <div class="search">
+                <input id="search" class="search-input" type="text" placeholder="Search for dishes (e.g., Burger, Pizza...)" onkeyup="myFunction()">
+            </div>
 
-            <center>
-               <p style="background-color: whitesmoke;">
-                <a href="feedback.html" style="margin-right: 3%;"><i>Feedback</i></></a>
-                <a href="viewprivacypolicy.html"><i>Privacy Ploicy</i></></a>
-               </p>
-            </center>   
+            <nav class="top-actions">
+                <a class="link" href="promotion.php">Offers</a>
+                <a class="link" href="track_delivery.php">Track</a>
+                <a class="link" href="aboutus.php">About</a>
+                <a class="btn btn-ghost" href="Login.html">Login</a>
+                <a class="btn" href="Signup.html">Signup</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Order food you love, fast.</h1>
+                <p>Explore popular items, check offers, and track delivery — all in one place.</p>
+                <div class="hero-cta">
+                    <a class="btn" href="Signup.html">Create account</a>
+                    <a class="btn btn-ghost" href="Login.html">Already a user? Login</a>
+                </div>
+            </div>
+            <div class="hero-banner" aria-hidden="true">
+                <img src="../Image/promo.jpg" alt="Promo banner">
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-title">
+                <h2>What’s on your mind?</h2>
+                <p>Browse categories</p>
+            </div>
+
+            <div class="category-row">
+                <a class="category" href="Burger.html">
+                    <img src="../Image/burger.jpg" alt="Burger">
+                    <span>Burger</span>
+                </a>
+                <a class="category" href="promotion.php">
+                    <img src="../Image/discount.jpg" alt="Offers">
+                    <span>Offers</span>
+                </a>
+                <a class="category" href="ReservationSystem.php">
+                    <img src="../Image/cover_image.jpg" alt="Reservation">
+                    <span>Table Booking</span>
+                </a>
+                <a class="category" href="storeLocator.php">
+                    <img src="../Image/logo.jpg" alt="Store Locator">
+                    <span>Store Locator</span>
+                </a>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-title">
+                <h2>Popular items</h2>
+                <p>Tap to explore</p>
+            </div>
+
+            <!-- Kept legacy id="Table" so existing search.js still works (now filters cards too) -->
+            <div id="Table" class="card-grid">
+                <a class="card js-search-item" href="Burger.html" data-name="Burger">
+                    <img class="card-img" src="../Image/burger.jpg" alt="Burger">
+                    <div class="card-body">
+                        <div class="card-title">Burger</div>
+                        <div class="card-subtitle">Juicy beef burger with lettuce, cheese, and special sauce.</div>
+                        <div class="card-meta">
+                            <span class="tag">Best Seller</span>
+                            <span class="price">$8</span>
+                        </div>
+                    </div>
+                </a>
+
+                <a class="card js-search-item" href="promotion.php" data-name="Discount Offers">
+                    <img class="card-img" src="../Image/discount_coupon.jpg" alt="Discount Coupon">
+                    <div class="card-body">
+                        <div class="card-title">Discount Offers</div>
+                        <div class="card-subtitle">Save more with today’s coupons and deals.</div>
+                        <div class="card-meta">
+                            <span class="tag tag-orange">Limited time</span>
+                            <span class="price">View</span>
+                        </div>
+                    </div>
+                </a>
+
+                <a class="card js-search-item" href="track_delivery.php" data-name="Track Delivery">
+                    <img class="card-img" src="../Image/fast_food.jpg" alt="Fast delivery">
+                    <div class="card-body">
+                        <div class="card-title">Track Delivery</div>
+                        <div class="card-subtitle">Know where your order is in real time.</div>
+                        <div class="card-meta">
+                            <span class="tag">Live</span>
+                            <span class="price">Open</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-left">
+                <div class="footer-brand">TASTY TRAILS</div>
+                <div class="footer-note">A simple Swiggy-style dashboard for your project.</div>
+            </div>
+            <div class="footer-links">
+                <a href="feedback.html">Feedback</a>
+                <a href="viewprivacypolicy.html">Privacy Policy</a>
+                <a href="contactUs.php">Contact</a>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>

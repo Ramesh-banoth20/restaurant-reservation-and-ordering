@@ -1,17 +1,17 @@
 <?php
-include_once('../Controller/SessionCheck.php');
+include_once('../controller/SessionCheck.php');
 ?>
 <!DOCTYPE html>
 <html>
 <head>
     <title>Restaurant Table Booking</title>
-    <script src="../JS/ReservationSystemCheck.js"></script>
-    <link rel="stylesheet" type="text/css" href="../CSS/Addguest_Admin.css">
+    <script src="../js/ReservationSystemCheck.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/Addguest_Admin.css">
  
 </head>
 <body >
     <center>
-    <form action="../Controller/ReservationSystemCheck.php" method="post">
+    <form action="../controller/ReservationSystemCheck.php" method="post">
         <fieldset class="booking-form" style="width:350px; height: 570px">
             <legend align="center"><h2>Booking Table</h2></legend>
             <table align="center">

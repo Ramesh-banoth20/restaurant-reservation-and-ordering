@@ -5,7 +5,7 @@
 <body style="margin: 0; font-family: Arial, sans-serif;">
     <ul class="navbar" style="list-style-type: none; margin: 0; padding: 0; background-color: black; overflow: hidden;">
         <li>
-              <img src="logo.jpg" alt="Famished Logo" style="height: 100px;">
+              <img src="../Image/logo.jpg" alt="Famished Logo" style="height: 100px;">
         </li>
     </ul>
     <h2>Log In</h2>

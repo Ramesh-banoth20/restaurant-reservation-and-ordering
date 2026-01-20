@@ -3,7 +3,7 @@
     $dbhost = "localhost";
     $dbname = "test";
     $dbuser = "root";
-    $dbpass = "";
+    $dbpass = "ramesh@2005";
 
     function getConnection(){
         global $dbhost;

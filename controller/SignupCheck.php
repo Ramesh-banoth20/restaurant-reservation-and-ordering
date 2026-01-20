@@ -54,18 +54,21 @@ function PasswordValidation($password) {
 }
 
 function PhoneNumberValidation($phone) {
-
-    $validformat = ['013', '014', '015', '016', '017', '018', '019'];
-    $position = substr($phone, 0, 3);
-
-    if (!in_array($position, $validformat)) {
-        return false;
-    } 
-    //$phoneNumber = substr($phone, 3);
-    if(is_numeric($phone) && strlen($phone) == 11)
-    {
-        return true;
+    // Remove any spaces, dashes, or parentheses
+    $phone = preg_replace('/[^0-9]/', '', $phone);
+    
+    // Check if the number starts with +91 or 91
+    if (strlen($phone) == 12 && substr($phone, 0, 2) == '91') {
+        $phone = substr($phone, 2);
     }
+    
+    // Check if the number starts with a valid Indian mobile prefix (6-9)
+    $firstDigit = substr($phone, 0, 1);
+    if (!in_array($firstDigit, ['6', '7', '8', '9'])) {
+        return false;
+    }
+    
+    return true;
 }
 
 $firstname = $_POST['firstname'];
@@ -112,7 +115,7 @@ if ($firstname == "" || $lastname == "" || $username == "" || $email == "" || $p
                         else {
 
                             if (!PhoneNumberValidation($phone)) {
-                                echo "phone number Should  be start with '013', '014', '015', '016', '017', '018', '019' and contain 11 number!";
+                                echo "Invalid phone number! Please enter a valid Indian mobile number (10 digits starting with 6,7,8, or 9)";
                             } 
                             else {
 

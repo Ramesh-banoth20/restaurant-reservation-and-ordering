@@ -20,18 +20,26 @@
     }
  
     function PhoneNumberValidation($phone) {
- 
-        $validformat = ['013', '014', '015', '016', '017', '018', '019'];
-        $position = substr($phone, 0, 3);
-   
-        if (!in_array($position, $validformat)) {
+        // Remove any non-digit characters
+        $phone = preg_replace('/[^0-9]/', '', $phone);
+        
+        // Check if the number starts with +91 or 91
+        if (strlen($phone) == 12 && substr($phone, 0, 2) == '91') {
+            $phone = substr($phone, 2);
+        }
+        
+        // Check if the number is 10 digits long
+        if (strlen($phone) != 10) {
             return false;
         }
-        //$phoneNumber = substr($phone, 3);
-        if(is_numeric($phone) && strlen($phone) == 11)
-        {
-            return true;
+        
+        // Check if the number starts with a valid Indian mobile prefix (6-9)
+        $firstDigit = substr($phone, 0, 1);
+        if (!in_array($firstDigit, ['6', '7', '8', '9'])) {
+            return false;
         }
+        
+        return true;
     }
  
     $name = $_REQUEST['name'];
@@ -51,7 +59,7 @@
         }
         else {
             if(!PhoneNumberValidation($number)){
-            echo "Invalid phone number must be 11 digit!";
+            echo "Invalid phone number must be 10 digit!";
             }
     else{
         $status = booktable($name, $number, $date, $time, $guests);

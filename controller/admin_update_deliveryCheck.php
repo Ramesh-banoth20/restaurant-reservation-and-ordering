@@ -1,37 +1,24 @@
 <?php
-
-    require_once('../model/operationModel.php');
+    include_once('../model/operationModel.php');
     session_start();
 
-    if ($_SERVER['REQUEST_METHOD'] == 'POST')
-    {
-        $trackingKey = $_POST['tracking_key'];
-        $estimatedDeliveryTime = $_POST['EDT'];
-        $deliveryStatus = $_POST['delivery_status'];
-
-        if($trackingKey == "" || $estimatedDeliveryTime == "" || $deliveryStatus == "")
-        {
-            echo "Please fill in all the fields.";
-        }
-        else
-        {
-            $updateResult = updateDelivery($trackingKey, $estimatedDeliveryTime, $deliveryStatus);
-
-            if ($updateResult)
-            {
-                echo "Delivery information updated successfully.";
-            }
-            else
-            {
-                echo "Failed to update delivery information.";
-            }
-        }
-    }
-    else
-    {
-        header('Location: ../view/admin_update_delivery.php');
+    if (!isset($_SESSION['username']) || $_SESSION['user_type'] !== 'admin') {
+        header('Location: ../view/login.php');
+        exit();
     }
 
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $tracking_key = $_POST['tracking_key'];
+        $estimated_ready_time = $_POST['ERT'];
+        $preparation_status = $_POST['preparation_status'];
+
+        if (updateDelivery($tracking_key, $estimated_ready_time, $preparation_status)) {
+            header('Location: ../view/admin_update_delivery.php?success=1');
+        } else {
+            header('Location: ../view/admin_update_delivery.php?error=1');
+        }
+        exit();
+    }
 ?>
 
 <html>

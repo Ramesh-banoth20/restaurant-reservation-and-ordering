@@ -1,101 +1,107 @@
+<!DOCTYPE html>
 <html>
     <style>
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #f8f8f8;
-            color: #333;
-        }
- 
-        p {
-            background-color: #4CAF50;
-            padding: 10px;
             margin: 0;
-            color: white;
-            text-align: center;
+            padding: 0;
+            background-color: #fff;
         }
  
-        a {
-            color: #4CAF50;
-            text-decoration: none;
-            margin: 0 15px;
-            transition: color 0.3s ease-in-out;
+        .header-container {
+            background-color: #fff;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            padding: 10px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
  
-        a:hover {
-            color: #45a049;
+        .nav-bar {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
         }
  
-        center {
-            text-align: center;
-            margin-top: 20px;
-        }
- 
-        /* Additional styles for a more modern and attractive look */
-        a {
-            border-bottom: 2px solid transparent;
-            position: relative;
-            font-size: 18px;
+        .logo {
+            font-size: 24px;
             font-weight: bold;
+            color: #fc8019;
+            text-decoration: none;
         }
  
-        a:before {
-            content: "";
-            position: absolute;
-            width: 100%;
-            height: 2px;
-            bottom: 0;
-            left: 0;
-            background-color: #4CAF50;
-            visibility: hidden;
-            transform: scaleX(0);
-            transition: all 0.3s ease-in-out 0s;
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            align-items: center;
         }
  
-        a:hover:before {
-            visibility: visible;
-            transform: scaleX(1);
+        .nav-links a {
+            color: #3d4152;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
         }
  
-        center a {
-            margin: 0 15px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            padding: 10px 15px;
-            border-radius: 5px;
+        .nav-links a:hover {
+            color: #fc8019;
+            background-color: #f8f8f8;
         }
  
-        /* Add hover effect for the whole link */
-        center a:hover {
+        .main-nav {
+            background-color: #fff;
+            border-top: 1px solid #e8e8e8;
+            padding: 10px 0;
+        }
+ 
+        .main-nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+ 
+        .main-nav a {
+            color: #3d4152;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+ 
+        .main-nav a:hover {
+            color: #fc8019;
             background-color: #f8f8f8;
         }
     </style>
-    <p>
-        <a href="VarifiedUserIndex.php"><b style=" font-size: xx-large; margin-right: 60%; color: white;"><i>ABC RESTAURANT</i></b></a>
-        <a href="viewnotification.php" style="margin: 2%; color: white;">Notification</a>
-        <a href="../controller/LogoutCheck.php" style="color: white;">Logout</a>
-    </p>
-    <!-- <p  style="background-color: whitesmoke;">
-            <a href="VarifiedUserIndex.php"><b style=" font-size: xx-large; margin-right: 68%;"><i>ABC RESTAURENT</i></b></a>
-            <a href="viewnotification.php" style="margin: 2%;">Notification</a>
-            <a href="../controller/LogoutCheck.php">Logout</a>
-            <br><br>
-    </p> -->
-            <center> 
-        <!-- <form action="search.php" method="get"></form>
-            <input type="text"id="search" name="word" style="width: 40%;"/>
-            <input type="submit" value="Search">
-        </form> -->
-        </center><br>
-        <center>
-            <a href="track_delivery.php" style="margin: 1%;">Track Order</a>
+    <div class="header-container">
+        <div class="nav-bar">
+            <a href="VarifiedUserIndex.php" class="logo">TASTY TRAILS</a>
+            <div class="nav-links">
+                <a href="viewnotification.php">Notifications</a>
+                <a href="../controller/LogoutCheck.php">Logout</a>
+            </div>
+        </div>
+    </div>
+    <div class="main-nav">
+        <div class="main-nav-container">
             <a href="orderhistory.php">Past Orders</a>
-            <a href="../view/ReservationSystem.php" style="margin: 1%;">Book Table</a>
             <a href="promotion.php">Promotion</a>
-            <a href="aboutus.php"style="margin: 1%;">About Us</a>
+            <a href="aboutus.php">About Us</a>
             <a href="review.php">Review</a>
-            <a href="faq.php"style="margin: 1%;">Faq</a>
+            <a href="faq.php">FAQ</a>
             <a href="contactUs.php">Contact Us</a>
-            <a href="storeLocator.php"style="margin: 1%;">Store Locator</a>
-            <a href="userProfile.php">User Profile</a><br><br>
-
-        </center>
+            <a href="userProfile.php">Profile</a>
+        </div>
+    </div>
 </html>

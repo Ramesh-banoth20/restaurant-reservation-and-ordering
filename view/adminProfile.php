@@ -10,7 +10,13 @@ include_once('../controller/sessionCheck.php');
     // }
 
 
-    $user_name = $_SESSION['UserName'];
+    // loginCheck.php sets $_SESSION['username'] (lowercase).
+    // Fall back safely to avoid warnings on fresh sessions.
+    $user_name = $_SESSION['username'] ?? $_SESSION['UserName'] ?? $_SESSION['userName'] ?? null;
+    if ($user_name === null) {
+        header('location: ../view/Login.html');
+        exit();
+    }
 
 
     $user = getAdmin($user_name);

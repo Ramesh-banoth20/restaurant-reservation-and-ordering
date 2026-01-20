@@ -53,25 +53,42 @@
     function trackDelivery($tracking_key)
     {
         $con = getConnection();
-        $sql = "SELECT estimated_delivery_at, delivery_status FROM orderhistory WHERE tracking_key = '$tracking_key'";
+        $sql = "SELECT estimated_ready_time, preparation_status FROM orderhistory WHERE tracking_key = '$tracking_key'";
         $result = mysqli_query($con, $sql);
         $order = mysqli_fetch_assoc($result);
 
         if (count($order) > 0)
         {
-            $estimated_delivery_time = $order['estimated_delivery_at'];
-            $delivery_status = $order['delivery_status'];
+            $estimated_ready_time = $order['estimated_ready_time'];
+            $preparation_status = $order['preparation_status'];
 
-            echo "Estimated Delivery Time: $estimated_delivery_time<br>";
-            echo "Delivery Status: $delivery_status<br>";
+            echo "<div class='status-container'>";
+            echo "<h3>Order Status</h3>";
+            
+            switch($preparation_status) {
+                case 'pending':
+                    echo "<p class='status pending'>Your order is being prepared</p>";
+                    echo "<p>Estimated ready time: $estimated_ready_time</p>";
+                    break;
+                case 'preparing':
+                    echo "<p class='status preparing'>Your food is being prepared</p>";
+                    echo "<p>Estimated ready time: $estimated_ready_time</p>";
+                    break;
+                case 'ready':
+                    echo "<p class='status ready'>Your food is ready! Please collect it from the counter.</p>";
+                    break;
+                default:
+                    echo "<p class='status'>Order received and will be prepared shortly</p>";
+            }
+            echo "</div>";
         }
         else
         {
-            echo "Order not found. Please check your tracking key.";
+            echo "<p class='error'>Order not found. Please check your tracking key.</p>";
         }
     }
 
-    function updateDelivery($trackingKey, $estimatedDeliveryTime, $deliveryStatus)
+    function updateDelivery($trackingKey, $estimatedReadyTime, $preparationStatus)
     {
         $con = getConnection();
 
@@ -82,8 +99,8 @@
             return false;
         }
 
-        $sql = "UPDATE orders SET estimated_delivery_at = '$estimatedDeliveryTime', 
-                        delivery_status = '$deliveryStatus' WHERE tracking_key = '$trackingKey'";
+        $sql = "UPDATE orderhistory SET estimated_ready_time = '$estimatedReadyTime', 
+                        preparation_status = '$preparationStatus' WHERE tracking_key = '$trackingKey'";
         
         $updateResult = mysqli_query($con, $sql);
 

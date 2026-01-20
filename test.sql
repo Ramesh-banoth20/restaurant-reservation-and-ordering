@@ -151,15 +151,15 @@ CREATE TABLE `orderhistory` (
   `adress` varchar(100) NOT NULL,
   `date` date NOT NULL DEFAULT current_timestamp(),
   `tracking_key` varchar(10) NOT NULL,
-  `estimated_delivery_at` varchar(50) NOT NULL,
-  `delivery_status` varchar(30) NOT NULL
+  `estimated_ready_time` varchar(50) NOT NULL,
+  `preparation_status` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `orderhistory`
 --
 
-INSERT INTO `orderhistory` (`id`, `username`, `food_name`, `food_quantity`, `total_amount`, `payment_type`, `amount_paid`, `adress`, `date`, `tracking_key`, `estimated_delivery_at`, `delivery_status`) VALUES
+INSERT INTO `orderhistory` (`id`, `username`, `food_name`, `food_quantity`, `total_amount`, `payment_type`, `amount_paid`, `adress`, `date`, `tracking_key`, `estimated_ready_time`, `preparation_status`) VALUES
 (5, 'user1', 'Pizza', 7, '35', 'card', '35', 'dhaka', '2023-11-15', 'ABC123', '08:32', 'out_for_delivery'),
 (6, 'user1', 'Pizza', 3, '15', 'cash', '15', 'uttara', '2023-11-15', '', '', ''),
 (8, 'user1', 'Pizza', 2, '10', 'card', '10', 'dhaka', '2023-11-15', '', '', ''),

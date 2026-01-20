@@ -9,7 +9,12 @@
     <body>
         
         <h2>welcome to user dashboard</h2>
-        <b>UserName: <?php echo $UserName= $_SESSION['UserName'];?></b>
+        <?php
+            // loginCheck.php sets $_SESSION['username'] (lowercase).
+            // Fall back safely to avoid warnings.
+            $displayUserName = $_SESSION['username'] ?? $_SESSION['UserName'] ?? $_SESSION['userName'] ?? 'User';
+        ?>
+        <b>UserName: <?php echo htmlspecialchars($displayUserName); ?></b>
         <ul>
             <li><a href="order.php">Order</a></li>   
             <li><a href="orderhistory.php">Past order</a></li>

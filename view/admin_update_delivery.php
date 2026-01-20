@@ -8,7 +8,7 @@
 
 <html>
 <head>
-    <title>Update Delivery Tracking</title>
+    <title>Update Order Status</title>
     <script src="../js/admin_update_deliveryCheck.js"></script>
     <link rel="stylesheet" type="text/css" href="../css/admin_update_delivery.css">
 </head>
@@ -18,37 +18,36 @@
     <table border="1">
         <tr>
             <th>Tracking Key</th>
-            <th>Estimated Delivery Time</th>
-            <th>Delivery Status</th>
+            <th>Estimated Ready Time</th>
+            <th>Preparation Status</th>
         </tr>
         <?php foreach ($orders as $order): ?>
             <tr>
                 <td align="center"><?php echo htmlspecialchars($order['tracking_key']); ?></td>
-                <td align="center"><?php echo htmlspecialchars($order['estimated_delivery_at']); ?></td>
-                <td align="center"><?php echo htmlspecialchars($order['delivery_status']); ?></td>
+                <td align="center"><?php echo htmlspecialchars($order['estimated_ready_time']); ?></td>
+                <td align="center"><?php echo htmlspecialchars($order['preparation_status']); ?></td>
             </tr>
         <?php endforeach; ?>
     </table>
 
     <br><hr>
 
-    <h1>Update Delivery Tracking</h1>
+    <h1>Update Order Status</h1>
     <form action="../controller/admin_update_deliveryCheck.php" method="post" onsubmit="return validateAndSubmit()">
         <label for="tracking_key">Enter Tracking Key:</label>
         <input type="text" name="tracking_key" id="tracking_key" required> <br> <hr>
         
-        <label for="EDT">Estimated Delivery Time:</label>
-        <input type="time" id="EDT" name="EDT"> <br> <hr>
+        <label for="ERT">Estimated Ready Time:</label>
+        <input type="time" id="ERT" name="ERT"> <br> <hr>
 
-        <label for="delivery_status">Delivery Status:</label>
-            <select name="delivery_status" id="delivery_status">
+        <label for="preparation_status">Preparation Status:</label>
+            <select name="preparation_status" id="preparation_status">
                 <option value="pending">Pending</option>
-                <option value="out_for_delivery">Out for delivery</option>
-                <option value="delivered">Delivered</option>
+                <option value="preparing">Preparing</option>
+                <option value="ready">Ready</option>
             </select> <br> <hr>
 
-
-        <input type="submit" name="submit" value="Update Delivery">
+        <input type="submit" name="submit" value="Update Status">
     </form>
 
     <br>

@@ -14,16 +14,26 @@ function rqLetter(char) {
 }
 
 function phoneNumberValidation(phone) {
-    const validFormat = ['013', '014', '015', '016', '017', '018', '019'];
-    const position = phone.substring(0, 3);
-
-    if (!validFormat.includes(position)) {
+    // Remove any non-digit characters
+    phone = phone.replace(/\D/g, '');
+    
+    // Check if the number starts with +91 or 91
+    if (phone.length === 12 && phone.substring(0, 2) === '91') {
+        phone = phone.substring(2);
+    }
+    
+    // Check if the number is 10 digits long
+    if (phone.length !== 10) {
         return false;
     }
-
-    if (!isNaN(phone) && phone.length === 11) {
-        return true;
+    
+    // Check if the number starts with a valid Indian mobile prefix (6-9)
+    const firstDigit = phone[0];
+    if (!['6', '7', '8', '9'].includes(firstDigit)) {
+        return false;
     }
+    
+    return true;
 }
 
 function vldf(){
@@ -40,7 +50,7 @@ if (name === "" || number === "" || date === "" || time === "" || guests === "")
         document.getElementById('print').innerHTML="Invalid Name. Use only letters!";
     } 
     else if (!phoneNumberValidation(number)) {
-            document.getElementById('print').innerHTML="Invalid phone number. Must be 11 digits!";
+            document.getElementById('print').innerHTML="Invalid phone number. Must be 10 digits and start with 6, 7, 8, or 9!";
         } else {
            // const status = bookTable(name, number, date, time, guests);
             let xhttp = new XMLHttpRequest();
